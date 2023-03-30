@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voice with SignalWire Compatibility API</title>
+    <link rel="stylesheet" media="all" href="index.css" />
+  </head>
+  <body>
+    <div class="body">
+      <form method="POST" action="/sendCall">
+        <h1>Send an invite to a Video Room with SW</h1>
+        <label>To Phone Number:</label>
+        <input
+          type="input"
+          placeholder="E.164 number like +18001234567"
+          name="phoneno"
+        />
+        <br />
+        <button>Send</button>
+      </form>
+    </div>
+    <div style="margin: 0 auto; width: 800px; height: 500px;">
+      <script>!function(e,t){function i(){let t=Object.assign({rootElement:r},e.swvr.p)
+      ;SignalWire.AppKit.VideoConference(t)}e.swvr=e.swvr||function(t={}){
+        Object.assign(e.swvr.p=e.swvr.p||{},t)}
+      ;let r=t.currentScript,n=t.createElement("script")
+      ;n.type="module",n.src="https://cdn.signalwire.com/@signalwire/app-kit@next/dist/signalwire/signalwire.esm.js",
+              n.defer=!0,n.onload=i,r.parentNode.insertBefore(n,r)
+      ;let s=t.createElement("script")
+      ;s.type="text/javascript",s.noModule=!0,s.src="https://cdn.signalwire.com/@signalwire/app-kit@next/dist/signalwire/signalwire.js",
+              s.defer=!0,s.onload=i,r.parentNode.insertBefore(s,r)
+      ;let o=t.createElement("link")
+      ;o.type="text/css",o.rel="stylesheet",o.href="https://cdn.signalwire.com/@signalwire/app-kit@next/dist/signalwire/signalwire.css",
+              r.parentNode.insertBefore(o,r),e.SignalWire=e.SignalWire||{Prebuilt:{
+          VideoRoom:e.swvr},AppKit:{VideoConference:e.swvr}}}(window,document);
+      SignalWire.AppKit.VideoConference({
+        token: 'vpt_d2ccccf7f7388d1021dcc07ddac03a6c',
+        // userName: 'your-name',
+        setupRoomSession: (roomSession) => {
+
+          roomSession.on("member.joined", (params) => {
+            memberJoined(params);
+          });
+        }
+      });
+      function memberJoined(params) {
+        const {name, id, type} = params.member;
+
+
+      }</script>
+    </div>
+  </body>
+</html>
+
